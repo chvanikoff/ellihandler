@@ -56,6 +56,7 @@ defmodule Elli.HTTPRequest do
   def urldecode(s), do: urldecode(s, <<>>)
   
   def urldecode(<<?%, h, l, rest :: binary>>, acc) do
+    require Bitwise
     g = unhex(h)
     m = unhex(l)
     if g == :error or m == :error do
